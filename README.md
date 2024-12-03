@@ -132,10 +132,6 @@ server {
 ## Odoo 18.0 screenshots after successful installation.
 
 <p align="center">
-<img src="screenshots/odoo-18-welcome-screenshot.png" width="50%">
-</p>
-
-<p>
 <img src="screenshots/odoo-18-apps-screenshot.png" width="100%">
 </p>
 
@@ -143,3 +139,6 @@ server {
 <img src="screenshots/odoo-18-sales-screen.png" width="100%">
 </p>
 
+<p>
+<img src="screenshots/odoo-18-welcome-screenshot.png" width="50%">
+</p>
