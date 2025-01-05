@@ -1,4 +1,5 @@
 version: '2'
+
 services:
   db:
     image: postgres:17
@@ -7,9 +8,12 @@ services:
       - POSTGRES_USER=odoo
       - POSTGRES_PASSWORD=odoo18@2024
       - POSTGRES_DB=postgres
-    restart: always             # run as a service
+    restart: always
     volumes:
-        - ./postgresql:/var/lib/postgresql/data
+      - ./postgresql:/var/lib/postgresql/data
+    networks:
+      custom_net:
+        ipv4_address: 172.20.0.10
 
   odoo18:
     image: odoo:18
@@ -17,8 +21,8 @@ services:
     depends_on:
       - db
     ports:
-      - "10018:8069"
-      - "20018:8072" # live chat
+      - "10018:8069"   # main Odoo
+      - "20018:8072"   # live chat
     tty: true
     command: --
     environment:
@@ -26,10 +30,20 @@ services:
       - USER=odoo
       - PASSWORD=odoo18@2024
     volumes:
-      #- /etc/timezone:/etc/timezone:ro
-      #- /etc/localtime:/etc/localtime:ro
-      # - ./entrypoint.sh:/entrypoint.sh   # if you want to install additional Python packages, uncomment this line!
+      # - /etc/timezone:/etc/timezone:ro
+      # - /etc/localtime:/etc/localtime:ro
+      # - ./entrypoint.sh:/entrypoint.sh
       - ./addons:/mnt/extra-addons
       - ./etc:/etc/odoo
-    restart: always             # run as a service
-    
+    restart: always
+    networks:
+      custom_net:
+        ipv4_address: 172.20.0.11
+
+networks:
+  custom_net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/24
+          gateway: 172.20.0.1
