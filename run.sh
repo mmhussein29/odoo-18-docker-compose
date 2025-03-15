@@ -46,4 +46,4 @@ find $DESTINATION -type d -exec chmod 755 {} \;
 # Run Odoo
 docker-compose -f $DESTINATION/docker-compose.yml up -d
 
-echo "Odoo started at http://localhost:$PORT | Master Password: minhng.info | Live chat port: $CHAT"
+echo "Odoo started at http://localhost:$PORT | Master Password: mostafa@1234 | Live chat port: $CHAT"
