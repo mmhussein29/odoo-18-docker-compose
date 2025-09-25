@@ -4,7 +4,7 @@ PORT=$2
 CHAT=$3
 
 # Clone Odoo directory
-git clone --depth=1 https://github.com/pro-777/odoo-18-docker-compose $DESTINATION
+git clone --depth=1 https://github.com/mmhussein29/odoo-18-docker-compose $DESTINATION
 rm -rf $DESTINATION/.git
 
 # Create PostgreSQL directory
@@ -46,4 +46,4 @@ find $DESTINATION -type d -exec chmod 755 {} \;
 # Run Odoo
 docker-compose -f $DESTINATION/docker-compose.yml up -d
 
-echo "Odoo started at http://localhost:$PORT | Master Password: mostafa@1234 | Live chat port: $CHAT"
+echo "Odoo started at http://localhost:$PORT | Master Password: Younnis@2030 | Live chat port: $CHAT"
